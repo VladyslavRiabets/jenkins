@@ -123,7 +123,15 @@ resource "azurerm_virtual_machine" "vm" {
   }
 }
 
-# Output Public IP of the VM
+# Output Public IP, username  and password of the VM
 output "vm_ip" {
   value = azurerm_public_ip.public_ip.ip_address
+}
+
+output "vm_username" {
+  value = azurerm_virtual_machine.vm.os_profile[0].admin_username
+}
+
+output "vm_password" {
+  value = azurerm_virtual_machine.vm.os_profile[0].admin_password
 }
