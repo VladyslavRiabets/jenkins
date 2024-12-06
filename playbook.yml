@@ -15,8 +15,8 @@
 
     - name: Configure server
       copy:
-        src: "{{ source }}"
-        dest: "{{ destin }}"
+        src: /var/lib/jenkins/workspace/Azure-Terraform-Ansible/index.html
+        dest: /var/www/html/index.html
         mode: 0555
       notify: restart
 
