@@ -97,6 +97,8 @@ resource "azurerm_virtual_machine" "vm" {
   resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.nic.id]
   vm_size               = "Standard_B1s"
+  admin_username        = "azureuser"
+  admin_password        = "Sempertemp12345!"
 
   storage_os_disk {
     name              = "osdisk"
@@ -114,8 +116,6 @@ resource "azurerm_virtual_machine" "vm" {
 
   os_profile {
     computer_name  = "jenkinsvm"
-    admin_username = "azureuser"
-    admin_password = "Sempertemp12345!"
   }
 
   os_profile_linux_config {
@@ -129,10 +129,10 @@ output "vm_ip" {
 }
 
 output "vm_username" {
-  value = azurerm_virtual_machine.vm.os_profile.admin_username
+  value = azurerm_virtual_machine.vm.admin_username
 }
 
 output "vm_password" {
-  value = azurerm_virtual_machine.vm.os_profile.admin_password
+  value = azurerm_virtual_machine.vm.admin_password
 }
 
