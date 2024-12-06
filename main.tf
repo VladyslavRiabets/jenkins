@@ -129,9 +129,10 @@ output "vm_ip" {
 }
 
 output "vm_username" {
-  value = azurerm_virtual_machine.vm.os_profile.admin_username
+  value = [for vm in azurerm_virtual_machine.vm : vm.os_profile[0].admin_username][0]
 }
 
 output "vm_password" {
-  value = azurerm_virtual_machine.vm.os_profile.admin_password
+  value = [for vm in azurerm_virtual_machine.vm : vm.os_profile[0].admin_password][0]
 }
+
