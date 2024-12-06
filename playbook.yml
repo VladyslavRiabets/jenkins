@@ -3,10 +3,6 @@
   hosts: all
   become: yes
 
-  vars:
-    source: /root/ansible/index.html
-    destin: /var/www/html
-
   tasks:
     - name: Install NGINX server
       apt:
